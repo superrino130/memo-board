@@ -1,11 +1,37 @@
+drop table if exists users;
 drop table if exists todos;
+
+
+create table users
+(
+  id integer primary key,
+  userName text
+);
 
 create table todos
 (
   id integer PRIMARY key,
+  users_id integer,
   body text,
   created_at
 );
+
+insert into users
+  (userName)
+values
+  ("まこと");
+
+insert into users
+  (userName)
+values
+  ("あかり");
+
+insert into users
+  (userName)
+values
+  ("しゅうと");
+
+
 
 -- insert into todos
 --   (body)

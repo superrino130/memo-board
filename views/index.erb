@@ -1,10 +1,20 @@
 <h1>todoリスト</h1>
 
+
 <form action="/create" method = "post">
   <%= Rack::Csrf.csrf_tag(env)%>
+
+  <%# セレクトボックス %>
+  <select name="user" id="">
+    <% @users.each do |user|%>
+      <option value="<%= user.userName%>"><%= user.userName%></option>
+    <% end %>
+  </select>
+
   <input type="text" name="body" class="text_box">
   <input type="submit" value="送信！">
 </form>
+
 
 
 <ul>
@@ -14,7 +24,11 @@
    <li data-id = "<%= todo.id%>" data-token = "<%= Rack::Csrf.csrf_token(env)%>">
       <div class="one">
         <%= Rack::Utils.escape_html(todo.body)%>
+        <%#= @users.userName.find(1)%>
+        <%#= todo.userName%>
+
       </div>
+
       
       <div class="time">
         <%= time = todo.created_at%>
