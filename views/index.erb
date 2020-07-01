@@ -1,0 +1,28 @@
+<h1>todoリスト</h1>
+
+<form action="/create" method = "post">
+  <%= Rack::Csrf.csrf_tag(env)%>
+  <input type="text" name="body" class="text_box">
+  <input type="submit" value="送信！">
+</form>
+
+
+<ul>
+  <% @todos.each do |todo|%>
+    <%# ここ重要 %>
+    <%# liにカスタムデータ属性としてidを持たせる(ajaxで使用)%>
+   <li data-id = "<%= todo.id%>" data-token = "<%= Rack::Csrf.csrf_token(env)%>">
+      <div class="one">
+        <%= Rack::Utils.escape_html(todo.body)%>
+      </div>
+      
+      <div class="time">
+        <%= time = todo.created_at%>
+        <span class="delete">[x]</span>
+      </div>
+
+      <%#= todo.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+   
+   </li>
+  <% end%>
+</ul>

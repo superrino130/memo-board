@@ -1,0 +1,41 @@
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 4px;
+}
+
+
+.time {
+  max-width: 300px;
+  float: right;
+  text-align: right;
+
+}
+
+.one {
+  max-width: 500px;
+  float: left;
+}
+
+li {
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+}
+
+.delete {
+  color: blue;
+  cursor: pointer;
+}
+
+
+ul {
+  padding: 10px;
+  border:2px ;
+  height: 200px;
+}
+ 
+.text_box {
+  width: 400px;
+  padding: 5px;
+  font-size: 16px;
+}
