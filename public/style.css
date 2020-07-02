@@ -1,15 +1,13 @@
 .container {
   margin: 0 auto;
   max-width: 1000px;
-  padding: 4px;
+  padding: 2px;
 }
-
 
 .time {
   max-width: 300px;
   float: right;
   text-align: right;
-
 }
 
 .one {
@@ -17,7 +15,17 @@
   float: left;
 }
 
+h1 {
+  display: inline;
+}
+
+form {
+  float: right;
+}
+
 li {
+  margin: 0 auto;
+  width: 90%;
   border-bottom: 1px solid black;
   padding-bottom: 3px;
 }
@@ -27,15 +35,28 @@ li {
   cursor: pointer;
 }
 
-
 ul {
-  padding: 10px;
+  padding: 1px;
   border:2px ;
-  height: 200px;
+  height: 160px;
 }
  
 .text_box {
   width: 400px;
   padding: 5px;
+  font-size: 16px;
+}
+
+.main {
+  display: inline;
+}
+
+.user_box {
+  border: 2px solid black;
+  margin-bottom: 4px;
+}
+
+.user_name {
+  text-align: center;
   font-size: 16px;
 }

@@ -12,6 +12,7 @@ create table todos
 (
   id integer PRIMARY key,
   users_id integer,
+  users_userName text,
   body text,
   created_at
 );

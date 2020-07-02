@@ -17,21 +17,24 @@ ActiveRecord::Base.establish_connection(
   "database" => "./table.db" 
 )
 
-class Todos < ActiveRecord::Base
-  validates :body, presence: true
-  # ★
-  belongs_to :user
-end
 
 class Users < ActiveRecord::Base
   validates :name, presence: true
   has_many :todos
 end
 
+class Todos < ActiveRecord::Base
+  validates :body, presence: true
+  # ★
+  belongs_to :user
+end
+
+
+
 get '/' do
   @title = "やることリスト"
   @todos = Todos.all
-  # ★　
+  # ★　エラーになる
   # @todos = Todos.includes(:user).all
   @users = Users.all
   erb :index
@@ -40,8 +43,8 @@ end
 
 
 post '/create' do
-  Todos.create(body: params[:body])
-  # Todos.create(userName: params[:user])
+  # 二行で書くと、うまくいかない。,で区切って複数指定
+  Todos.create(body: params[:body],users_userName: params[:user])
 
   redirect to('/')
 end

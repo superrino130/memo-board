@@ -5,38 +5,84 @@
   <%= Rack::Csrf.csrf_tag(env)%>
 
   <%# セレクトボックス %>
-  <select name="user" id="">
+  <select name="user" >
     <% @users.each do |user|%>
       <option value="<%= user.userName%>"><%= user.userName%></option>
     <% end %>
   </select>
 
   <input type="text" name="body" class="text_box">
-  <input type="submit" value="送信！">
+  <input type="submit" value="送信">
 </form>
 
 
+<div class="main">
+  <div class="user_box">
+    <p class="user_name">まこと</p>
+    <ul>
+      <% @todos.where(users_userName: "まこと").each do |todo|%>
+        <%# ここ重要 %>
+        <%# liにカスタムデータ属性としてidを持たせる(ajaxで使用)%>
+      <li data-id = "<%= todo.id%>" data-token = "<%= Rack::Csrf.csrf_token(env)%>">
+          <div class="one">
+            <%#= todo.users_userName %>
+            <%= Rack::Utils.escape_html(todo.body)%>
+          </div>
 
-<ul>
-  <% @todos.each do |todo|%>
-    <%# ここ重要 %>
-    <%# liにカスタムデータ属性としてidを持たせる(ajaxで使用)%>
-   <li data-id = "<%= todo.id%>" data-token = "<%= Rack::Csrf.csrf_token(env)%>">
-      <div class="one">
-        <%= Rack::Utils.escape_html(todo.body)%>
-        <%#= @users.userName.find(1)%>
-        <%#= todo.userName%>
+          <div class="time">
+            <%# .to_timeで変換することで時間の整形が可能となる%>
+            <%= time = todo.created_at.to_time.strftime("%Y/%m/%d %H:%M:%S")%>
+            <span class="delete">[x]</span>
+          </div>
+      </li>
+      <% end%>
+    </ul>
+  </div>
 
-      </div>
 
-      
-      <div class="time">
-        <%= time = todo.created_at%>
-        <span class="delete">[x]</span>
-      </div>
+  <div class="user_box">
+    <p class="user_name">あかり</p>
+    <ul>
+      <% @todos.where(users_userName: "あかり").each do |todo|%>
+        <%# ここ重要 %>
+        <%# liにカスタムデータ属性としてidを持たせる(ajaxで使用)%>
+      <li data-id = "<%= todo.id%>" data-token = "<%= Rack::Csrf.csrf_token(env)%>">
+          <div class="one">
+            <%#= todo.users_userName %>
+            <%= Rack::Utils.escape_html(todo.body)%>
+          </div>
 
-      <%#= todo.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
-   
-   </li>
-  <% end%>
-</ul>
+          <div class="time">
+            <%# .to_timeで変換することで時間の整形が可能となる%>
+            <%= time = todo.created_at.to_time.strftime("%Y/%m/%d %H:%M:%S")%>
+            <span class="delete">[x]</span>
+          </div>
+      </li>
+      <% end%>
+    </ul>
+  </div>
+
+  
+  <div class="user_box">
+    <p class="user_name">しゅうと</p>
+    <ul>
+      <% @todos.where(users_userName: "しゅうと").each do |todo|%>
+        <%# ここ重要 %>
+        <%# liにカスタムデータ属性としてidを持たせる(ajaxで使用)%>
+      <li data-id = "<%= todo.id%>" data-token = "<%= Rack::Csrf.csrf_token(env)%>">
+          <div class="one">
+            <%#= todo.users_userName %>
+            <%= Rack::Utils.escape_html(todo.body)%>
+          </div>
+
+          <div class="time">
+            <%# .to_timeで変換することで時間の整形が可能となる%>
+            <%= time = todo.created_at.to_time.strftime("%Y/%m/%d %H:%M:%S")%>
+            <span class="delete">[x]</span>
+          </div>
+      </li>
+      <% end%>
+    </ul>
+  </div>
+
+</div>
