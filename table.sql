@@ -18,19 +18,20 @@ create table todos
 );
 
 insert into users
-  (userName)
+  (id,userName)
 values
-  ("まこと");
+  (1, "田中");
 
-insert into users
-  (userName)
-values
-  ("あかり");
+-- insert into users
+--   (id,userName)
+-- values
+--   (2, "あかり");
 
-insert into users
-  (userName)
-values
-  ("しゅうと");
+-- insert into users
+--   (id,userName)
+-- values
+--   (3, "しゅうと");
+
 
 
 
@@ -40,21 +41,17 @@ values
 --   ("コメントっっっっっ")
 -- ;
 
-
 -- insert into todos
 --   (body)
 -- values
 --   ("お寿司が好きですよ")
 -- ;
 
-
-
 -- insert into todos
 --   (body,created_at)
 -- values
 --   ("コメントっっっっっ", "2020/01/01")
 -- ;
-
 
 -- insert into todos
 --   (body,created_at)
