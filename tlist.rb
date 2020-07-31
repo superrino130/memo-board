@@ -57,6 +57,7 @@ post '/destroy_todo' do
 end
 
 post '/destroy_user' do
+  Todos.where('users_id = ?', params[:users_id]).destroy_all
   Users.find(params[:users_id]).destroy
   redirect to('/')
 end
