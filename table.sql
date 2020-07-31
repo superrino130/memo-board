@@ -12,7 +12,7 @@ create table todos
 (
   id integer PRIMARY key,
   users_id integer,
-  users_userName text,
+  foreign key (users_id) references test(id)
   body text,
   created_at
 );
